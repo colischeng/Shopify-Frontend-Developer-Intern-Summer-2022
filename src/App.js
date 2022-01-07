@@ -2,6 +2,10 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "./state/index";
+import { Box, Grid, Paper, styled } from "@mui/material";
+import { Banner } from "./components/Banner/Banner";
+import { Toggle } from "./components/Toggle/Toggle";
+import { QueryPosts } from "./components/QueryPosts/QueryPosts";
 
 const App = () => {
   const account = useSelector((state) => state.account);
@@ -10,11 +14,11 @@ const App = () => {
   const { withdraw, deposit } = bindActionCreators(actionCreators, dispatch);
 
   return (
-    <div>
-      <h1>{account}</h1>
-      <button onClick={() => deposit(1000)}>Deposit</button>
-      <button onClick={() => withdraw(1000)}>Withdraw</button>
-    </div>
+    <Grid>
+      <Banner />
+      <Toggle />
+      <QueryPosts />
+    </Grid>
   );
 };
 

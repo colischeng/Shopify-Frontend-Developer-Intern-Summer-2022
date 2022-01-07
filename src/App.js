@@ -13,16 +13,11 @@ const App = () => {
 
   const { withdraw, deposit } = bindActionCreators(actionCreators, dispatch);
 
-  const camera = useSelector((state) => state.camera);
-  const date = useSelector((state) => state.date);
-
   return (
     <Grid>
       <Banner />
       <Toggle />
       <QueryPosts />
-      <div>{camera}</div>
-      <div>{date}</div>
     </Grid>
   );
 };

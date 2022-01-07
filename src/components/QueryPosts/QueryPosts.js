@@ -1,8 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Grid, Paper, Typography } from "@mui/material";
+import axios from "axios";
 import SearchBar from "./SearchBar/SearchBar";
 import Posts from "../Posts/Posts";
 import Offset from "../Offset";
+
+const capitalizeFirstLetter = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
 
 const classes = {
   root: {
@@ -15,6 +21,28 @@ const classes = {
 };
 
 export const QueryPosts = () => {
+  const camera = useSelector((state) => state.camera);
+  const date = useSelector((state) => state.date);
+
+  const [posts, setPosts] = useState({});
+  const api_key = "QDGQBwt2iMaCNhqtTvb5TCG64mrj1RVyPDFfly9T"; // no need to put in a .env file
+  const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${camera}/photos?earth_date=${date}&api_key=${api_key}`;
+
+  const getAllPosts = () => {
+    axios
+      .get(url)
+      .then((res) => {
+        setPosts(res.data.photos);
+      })
+      .catch((err) => {
+        console.log(`Fetch Error: ${err}`);
+      });
+  };
+
+  useEffect(() => {
+    getAllPosts();
+  }, [camera, date]);
+
   return (
     <Grid>
       <SearchBar />
@@ -23,13 +51,17 @@ export const QueryPosts = () => {
           <Grid item xs={12}>
             <Paper style={classes.paper}>
               <Typography variant="h6">
-                Displaying photos # - (# + 5) from CAMERA on DATE
+                Displaying photos # - (# + 5) from{" "}
+                {capitalizeFirstLetter(camera)} on {date}
               </Typography>
             </Paper>
+            <div>{JSON.stringify(posts)}</div>
             <Offset />
           </Grid>
         </Grid>
       </div>
+      <div>{camera}</div>
+      <div>{date}</div>
 
       <Posts />
     </Grid>

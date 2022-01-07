@@ -15,3 +15,20 @@ export const withdraw = (amount) => {
     });
   };
 };
+
+export const switchCamera = (camera) => {
+  return (dispatch) => {
+    dispatch({
+      type: camera,
+    });
+  };
+};
+
+export const changeDate = (date) => {
+  return (dispatch) => {
+    dispatch({
+      type: "date",
+      payload: date,
+    });
+  };
+};

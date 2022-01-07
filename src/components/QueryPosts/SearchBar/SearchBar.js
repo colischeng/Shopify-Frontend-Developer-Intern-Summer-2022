@@ -31,10 +31,11 @@ const SearchBar = () => {
         <Grid item xs={6} sm={4}>
           <DatePicker />
         </Grid>
-        <Grid item xs={1} sm={1}>
-          <Button>Search</Button>
+        <Grid item xs={1}>
+          <Button variant="contained">Search</Button>
         </Grid>
       </Grid>
+      <Offset />
     </div>
   );
 };

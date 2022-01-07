@@ -5,6 +5,7 @@ import axios from "axios";
 import SearchBar from "./SearchBar/SearchBar";
 import Posts from "../Posts/Posts";
 import Offset from "../Offset";
+import { cameraAbbreviations } from "./SearchBar/CameraSelector";
 
 const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -21,12 +22,11 @@ const classes = {
 };
 
 export const QueryPosts = () => {
-  const rover = useSelector((state) => state.rover);
-  const date = useSelector((state) => state.date);
+  const { rover, camera, date } = useSelector((state) => state);
 
   const [posts, setPosts] = useState({});
   const api_key = "QDGQBwt2iMaCNhqtTvb5TCG64mrj1RVyPDFfly9T"; // no need to put in a .env file
-  const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?earth_date=${date}&api_key=${api_key}`;
+  const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?earth_date=${date}&camera=${camera}&api_key=${api_key}`;
 
   const getAllPosts = () => {
     axios
@@ -41,7 +41,7 @@ export const QueryPosts = () => {
 
   useEffect(() => {
     getAllPosts();
-  }, [rover, date]);
+  }, [rover, date, camera]);
 
   return (
     <Grid>
@@ -52,7 +52,8 @@ export const QueryPosts = () => {
             <Paper style={classes.paper}>
               <Typography variant="h6">
                 Displaying photos # - (# + 5) from{" "}
-                {capitalizeFirstLetter(rover)} on {date}
+                {capitalizeFirstLetter(rover)}'s{" "}
+                {cameraAbbreviations.get(camera)} on {date}
               </Typography>
             </Paper>
             <div>{JSON.stringify(posts)}</div>
@@ -61,6 +62,7 @@ export const QueryPosts = () => {
         </Grid>
       </div>
       <div>{rover}</div>
+      <div>{camera}</div>
       <div>{date}</div>
 
       <Posts />

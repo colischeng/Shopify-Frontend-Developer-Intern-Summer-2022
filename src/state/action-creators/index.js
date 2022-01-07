@@ -24,6 +24,14 @@ export const switchRover = (rover) => {
   };
 };
 
+export const switchCamera = (camera) => {
+  return (dispatch) => {
+    dispatch({
+      type: camera,
+    });
+  };
+};
+
 export const changeDate = (date) => {
   return (dispatch) => {
     dispatch({

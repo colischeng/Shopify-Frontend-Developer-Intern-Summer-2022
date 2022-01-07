@@ -1,6 +1,7 @@
+import CameraSelector from "./CameraSelector";
 import RoverSelector from "./RoverSelector";
 import DatePicker from "./DatePicker";
-import { Button, Grid } from "@mui/material";
+import { FormControl, Grid } from "@mui/material";
 import Offset from "../../Offset";
 
 const classes = {
@@ -18,20 +19,27 @@ const SearchBar = () => {
   return (
     <div style={classes.root}>
       <Offset />
-      <Grid
-        container
-        spacing={3}
-        direction="row"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Grid item xs={6} sm={4}>
-          <RoverSelector />
+      <FormControl fullWidth>
+        {" "}
+        <Grid
+          container
+          spacing={3}
+          direction="row"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Grid item xs={6} sm={4}>
+            <RoverSelector />
+          </Grid>
+          <Grid item xs={6} sm={4}>
+            <CameraSelector />
+          </Grid>
+          <Grid item xs={6} sm={4}>
+            <DatePicker />
+          </Grid>
         </Grid>
-        <Grid item xs={6} sm={4}>
-          <DatePicker />
-        </Grid>
-      </Grid>
+      </FormControl>
+
       <Offset />
     </div>
   );

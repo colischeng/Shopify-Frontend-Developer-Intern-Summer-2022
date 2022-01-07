@@ -6,7 +6,7 @@
 
 <br />
 
-A web application using ReactJS and Material-UI that displays Mars Rover Photos from the NASA API. The application supports "liking" and "unliking" photographs with the following additional functionalities:
+A web application using ReactJS, React-Redux, and Material-UI that displays Mars Rover Photos from the NASA API. The application supports "liking" and "unliking" photographs with the following additional functionalities:
 
 <br />
 

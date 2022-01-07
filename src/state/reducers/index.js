@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
-import accountReducer from "./accountReducer";
 import roverReducer from "./roverReducer";
+import cameraReducer from "./cameraReducer";
 import dateReducer from "./dateReducer";
 
 const reducers = combineReducers({
-  account: accountReducer,
   rover: roverReducer,
+  camera: cameraReducer,
   date: dateReducer,
 });
 

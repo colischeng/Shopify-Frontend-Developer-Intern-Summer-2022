@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../../../state";
-import TextField from "@mui/material/TextField";
+import { Box, FormControl, TextField } from "@mui/material";
 
 const DatePicker = () => {
   const date = useSelector((state) => state.date);
@@ -11,18 +11,24 @@ const DatePicker = () => {
   const { changeDate } = bindActionCreators(actionCreators, dispatch);
 
   return (
-    <TextField
-      id="date"
-      label="Earth Date"
-      type="date"
-      defaultValue={date}
-      InputLabelProps={{
-        shrink: true,
-      }}
-      onChange={(event) => {
-        changeDate(event.target.value);
-      }}
-    />
+    <Box>
+      {" "}
+      <FormControl fullWidth>
+        {" "}
+        <TextField
+          id="date"
+          label="Earth Date"
+          type="date"
+          defaultValue={date}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={(event) => {
+            changeDate(event.target.value);
+          }}
+        />
+      </FormControl>
+    </Box>
   );
 };
 

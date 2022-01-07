@@ -1,4 +1,4 @@
-import CameraSelector from "./CameraSelector";
+import RoverSelector from "./RoverSelector";
 import DatePicker from "./DatePicker";
 import { Button, Grid } from "@mui/material";
 import Offset from "../../Offset";
@@ -26,13 +26,10 @@ const SearchBar = () => {
         justifyContent="center"
       >
         <Grid item xs={6} sm={4}>
-          <CameraSelector />
+          <RoverSelector />
         </Grid>
         <Grid item xs={6} sm={4}>
           <DatePicker />
-        </Grid>
-        <Grid item xs={1}>
-          <Button variant="contained">Search</Button>
         </Grid>
       </Grid>
       <Offset />

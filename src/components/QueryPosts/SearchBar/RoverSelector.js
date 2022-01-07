@@ -1,26 +1,25 @@
-import { useState } from "react";
 import { Box, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../../../state";
 
-const CameraSelector = () => {
-  const camera = useSelector((state) => state.camera);
+const RoverSelector = () => {
+  const rover = useSelector((state) => state.rover);
 
   const dispatch = useDispatch();
 
-  const { switchCamera } = bindActionCreators(actionCreators, dispatch);
+  const { switchRover } = bindActionCreators(actionCreators, dispatch);
 
   return (
-    <Box sx={{ minWidth: 120 }}>
+    <Box>
       <FormControl fullWidth>
-        <InputLabel>Camera</InputLabel>
+        <InputLabel>Rover</InputLabel>
         <Select
-          value={camera}
-          label="Camera"
+          value={rover}
+          label="Rover"
           defaultValue={"curiosity"}
           onChange={(event) => {
-            switchCamera(event.target.value);
+            switchRover(event.target.value);
           }}
         >
           <MenuItem value={"curiosity"}>Curiosity</MenuItem>
@@ -32,4 +31,4 @@ const CameraSelector = () => {
   );
 };
 
-export default CameraSelector;
+export default RoverSelector;

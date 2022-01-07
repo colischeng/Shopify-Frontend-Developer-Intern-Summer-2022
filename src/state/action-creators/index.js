@@ -16,10 +16,10 @@ export const withdraw = (amount) => {
   };
 };
 
-export const switchCamera = (camera) => {
+export const switchRover = (rover) => {
   return (dispatch) => {
     dispatch({
-      type: camera,
+      type: rover,
     });
   };
 };

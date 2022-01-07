@@ -21,12 +21,12 @@ const classes = {
 };
 
 export const QueryPosts = () => {
-  const camera = useSelector((state) => state.camera);
+  const rover = useSelector((state) => state.rover);
   const date = useSelector((state) => state.date);
 
   const [posts, setPosts] = useState({});
   const api_key = "QDGQBwt2iMaCNhqtTvb5TCG64mrj1RVyPDFfly9T"; // no need to put in a .env file
-  const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${camera}/photos?earth_date=${date}&api_key=${api_key}`;
+  const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?earth_date=${date}&api_key=${api_key}`;
 
   const getAllPosts = () => {
     axios
@@ -41,7 +41,7 @@ export const QueryPosts = () => {
 
   useEffect(() => {
     getAllPosts();
-  }, [camera, date]);
+  }, [rover, date]);
 
   return (
     <Grid>
@@ -52,7 +52,7 @@ export const QueryPosts = () => {
             <Paper style={classes.paper}>
               <Typography variant="h6">
                 Displaying photos # - (# + 5) from{" "}
-                {capitalizeFirstLetter(camera)} on {date}
+                {capitalizeFirstLetter(rover)} on {date}
               </Typography>
             </Paper>
             <div>{JSON.stringify(posts)}</div>
@@ -60,7 +60,7 @@ export const QueryPosts = () => {
           </Grid>
         </Grid>
       </div>
-      <div>{camera}</div>
+      <div>{rover}</div>
       <div>{date}</div>
 
       <Posts />

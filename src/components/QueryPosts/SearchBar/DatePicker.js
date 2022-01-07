@@ -16,7 +16,6 @@ const DatePicker = () => {
       label="Earth Date"
       type="date"
       defaultValue={date}
-      sx={{ width: 220 }}
       InputLabelProps={{
         shrink: true,
       }}

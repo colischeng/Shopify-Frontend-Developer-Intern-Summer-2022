@@ -1,4 +1,4 @@
-const cameraReducer = (state = "curiosity", action) => {
+const roverReducer = (state = "curiosity", action) => {
   switch (action.type) {
     case "curiosity":
       return "curiosity";
@@ -11,4 +11,4 @@ const cameraReducer = (state = "curiosity", action) => {
   }
 };
 
-export default cameraReducer;
+export default roverReducer;

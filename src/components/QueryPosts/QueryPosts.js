@@ -1,20 +1,13 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Grid, Paper, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import axios from "axios";
 import SearchBar from "./SearchBar/SearchBar";
 import Posts from "../Posts/Posts";
-import Offset from "../Offset";
 import { cameraAbbreviations } from "./SearchBar/CameraSelector";
 
 const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
-};
-
-const classes = {
-  root: {
-    flexGrow: 1,
-  },
 };
 
 export const QueryPosts = () => {
@@ -49,7 +42,7 @@ export const QueryPosts = () => {
   return (
     <Grid>
       <SearchBar />
-      <Posts images={posts} title={title} />{" "}
+      <Posts images={posts} title={title} />
     </Grid>
   );
 };

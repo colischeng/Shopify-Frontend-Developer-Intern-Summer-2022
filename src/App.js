@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { useState } from "react";
 import { Grid } from "@mui/material";
 import { Banner } from "./components/Banner/Banner";
 import { Toggle } from "./components/Toggle/Toggle";

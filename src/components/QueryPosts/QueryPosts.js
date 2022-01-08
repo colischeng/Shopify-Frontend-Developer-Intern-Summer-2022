@@ -14,21 +14,21 @@ export const QueryPosts = () => {
   const { rover, camera, date, photoIndex } = useSelector((state) => state);
 
   const [posts, setPosts] = useState([]);
-  const api_key = "QDGQBwt2iMaCNhqtTvb5TCG64mrj1RVyPDFfly9T"; // no need to put in a .env file
-  const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?earth_date=${date}&camera=${camera}&api_key=${api_key}`;
-
-  const getAllPosts = () => {
-    axios
-      .get(url)
-      .then((res) => {
-        setPosts(Object.values(res.data.photos));
-      })
-      .catch((err) => {
-        console.log(`Fetch Error: ${err}`);
-      });
-  };
 
   useEffect(() => {
+    const api_key = "QDGQBwt2iMaCNhqtTvb5TCG64mrj1RVyPDFfly9T"; // no need to put in a .env file
+    const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?earth_date=${date}&camera=${camera}&api_key=${api_key}`;
+
+    const getAllPosts = () => {
+      axios
+        .get(url)
+        .then((res) => {
+          setPosts(Object.values(res.data.photos));
+        })
+        .catch((err) => {
+          console.log(`Fetch Error: ${err}`);
+        });
+    };
     getAllPosts();
   }, [rover, date, camera]);
 

@@ -8,7 +8,10 @@ const DatePicker = () => {
 
   const dispatch = useDispatch();
 
-  const { changeDate } = bindActionCreators(actionCreators, dispatch);
+  const { changeDate, toggleReset } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
 
   return (
     <Box>
@@ -25,6 +28,7 @@ const DatePicker = () => {
           }}
           onChange={(event) => {
             changeDate(event.target.value);
+            toggleReset();
           }}
         />
       </FormControl>

@@ -8,7 +8,10 @@ const RoverSelector = () => {
 
   const dispatch = useDispatch();
 
-  const { switchRover } = bindActionCreators(actionCreators, dispatch);
+  const { switchRover, toggleReset } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
 
   return (
     <Box>
@@ -20,6 +23,7 @@ const RoverSelector = () => {
           defaultValue={"curiosity"}
           onChange={(event) => {
             switchRover(event.target.value);
+            toggleReset();
           }}
         >
           <MenuItem value={"curiosity"}>Curiosity</MenuItem>

@@ -22,7 +22,10 @@ const CameraSelector = () => {
 
   const dispatch = useDispatch();
 
-  const { switchCamera } = bindActionCreators(actionCreators, dispatch);
+  const { switchCamera, toggleReset } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
 
   return (
     <Box>
@@ -34,6 +37,7 @@ const CameraSelector = () => {
           defaultValue={"fhaz"}
           onChange={(event) => {
             switchCamera(event.target.value);
+            toggleReset();
           }}
         >
           {Array.from(abbreviations.entries()).map((entry) => {

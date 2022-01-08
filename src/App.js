@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { Grid } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators } from "./state";
 import { Banner } from "./components/Banner/Banner";
 import { Toggle } from "./components/Toggle/Toggle";
 import { QueryPosts } from "./components/QueryPosts/QueryPosts";
@@ -7,8 +10,10 @@ import { LikedPosts } from "./components/LikedPosts/LikedPosts";
 import { LikedContext } from "./state/context/LikedContext";
 
 const App = () => {
-  // true means we are viewing queried posts
-  // false means we are viewing liked posts
+  const dispatch = useDispatch();
+
+  const { toggleReset } = bindActionCreators(actionCreators, dispatch);
+
   const [view, setView] = useState("query");
 
   const handleSwitch = () => {
@@ -17,6 +22,8 @@ const App = () => {
     } else {
       setView("query");
     }
+
+    toggleReset();
   };
 
   return (

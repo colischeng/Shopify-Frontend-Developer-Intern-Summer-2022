@@ -38,3 +38,11 @@ export const toggleRight = () => {
     });
   };
 };
+
+export const toggleReset = () => {
+  return (dispatch) => {
+    dispatch({
+      type: "reset",
+    });
+  };
+};

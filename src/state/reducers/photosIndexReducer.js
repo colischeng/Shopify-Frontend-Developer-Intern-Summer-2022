@@ -4,6 +4,8 @@ const photosIndexReducer = (state = 0, action) => {
       return state - 5;
     case "right":
       return state + 5;
+    case "reset":
+      return 0;
     default:
       return state;
   }

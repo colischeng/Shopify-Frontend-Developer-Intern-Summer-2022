@@ -9,17 +9,23 @@ import { LikedContext } from "./state/context/LikedContext";
 const App = () => {
   // true means we are viewing queried posts
   // false means we are viewing liked posts
-  const [view, setView] = useState(true);
+  const [view, setView] = useState("query");
 
   const handleSwitch = () => {
-    setView(!view);
+    if (view === "query") {
+      setView("liked");
+    } else {
+      setView("query");
+    }
   };
 
   return (
     <Grid>
       <Banner />
       <Toggle handleSwitch={handleSwitch} />
-      <LikedContext>{view ? <QueryPosts /> : <LikedPosts />}</LikedContext>
+      <LikedContext>
+        {view === "query" ? <QueryPosts /> : <LikedPosts />}
+      </LikedContext>
     </Grid>
   );
 };

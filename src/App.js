@@ -3,6 +3,7 @@ import { Grid } from "@mui/material";
 import { Banner } from "./components/Banner/Banner";
 import { Toggle } from "./components/Toggle/Toggle";
 import { QueryPosts } from "./components/QueryPosts/QueryPosts";
+import { LikedPosts } from "./components/LikedPosts/LikedPosts";
 
 const App = () => {
   const [view, setView] = useState(true);
@@ -17,7 +18,7 @@ const App = () => {
     <Grid>
       <Banner />
       <Toggle handleSwitch={handleSwitch} />
-      {view ? <QueryPosts /> : <div> hello</div>}
+      {view ? <QueryPosts /> : <LikedPosts />}
     </Grid>
   );
 };

@@ -1,21 +1,3 @@
-export const deposit = (amount) => {
-  return (dispatch) => {
-    dispatch({
-      type: "deposit",
-      payload: amount,
-    });
-  };
-};
-
-export const withdraw = (amount) => {
-  return (dispatch) => {
-    dispatch({
-      type: "withdraw",
-      payload: amount,
-    });
-  };
-};
-
 export const switchRover = (rover) => {
   return (dispatch) => {
     dispatch({
@@ -37,6 +19,22 @@ export const changeDate = (date) => {
     dispatch({
       type: "date",
       payload: date,
+    });
+  };
+};
+
+export const toggleLeft = () => {
+  return (dispatch) => {
+    dispatch({
+      type: "left",
+    });
+  };
+};
+
+export const toggleRight = () => {
+  return (dispatch) => {
+    dispatch({
+      type: "right",
     });
   };
 };

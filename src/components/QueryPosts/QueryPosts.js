@@ -33,12 +33,16 @@ export const QueryPosts = () => {
   }, [rover, date, camera]);
 
   const numPhotos = posts.length;
+
   const title = `Displaying photos ${photoIndex} - ${Math.min(
     photoIndex + 4,
     numPhotos === 0 ? 0 : numPhotos - 1
-  )} from ${capitalizeFirstLetter(rover)}'s ${cameraAbbreviations.get(
+  )} out of ${
+    posts.length > 0 ? posts.length - 1 : 0
+  } from ${capitalizeFirstLetter(rover)}'s ${cameraAbbreviations.get(
     camera
   )} on ${date}`;
+
   return (
     <Grid>
       <SearchBar />

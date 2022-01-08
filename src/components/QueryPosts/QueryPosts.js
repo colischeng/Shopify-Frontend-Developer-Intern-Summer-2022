@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { bindActionCreators } from "redux";
-import { actionCreators } from "../../state";
-import { Button, Grid, Paper, Typography } from "@mui/material";
+import { useSelector } from "react-redux";
+import { Grid, Paper, Typography } from "@mui/material";
 import axios from "axios";
 import SearchBar from "./SearchBar/SearchBar";
 import Posts from "../Posts/Posts";
@@ -21,13 +19,6 @@ const classes = {
 
 export const QueryPosts = () => {
   const { rover, camera, date, photoIndex } = useSelector((state) => state);
-
-  const dispatch = useDispatch();
-
-  const { toggleLeft, toggleRight } = bindActionCreators(
-    actionCreators,
-    dispatch
-  );
 
   const [posts, setPosts] = useState([]);
   const api_key = "QDGQBwt2iMaCNhqtTvb5TCG64mrj1RVyPDFfly9T"; // no need to put in a .env file
@@ -49,48 +40,16 @@ export const QueryPosts = () => {
   }, [rover, date, camera]);
 
   const numPhotos = posts.length;
-
+  const title = `Displaying photos ${photoIndex} - ${Math.min(
+    photoIndex + 4,
+    numPhotos === 0 ? 0 : numPhotos - 1
+  )} from ${capitalizeFirstLetter(rover)}'s ${cameraAbbreviations.get(
+    camera
+  )} on ${date}`;
   return (
     <Grid>
       <SearchBar />
-      <div style={classes.root}>
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
-            <Paper style={classes.paper}>
-              <Typography variant="h6" align="center">
-                Displaying photos {photoIndex} -{" "}
-                {Math.min(photoIndex + 4, numPhotos)} from{" "}
-                {capitalizeFirstLetter(rover)}'s{" "}
-                {cameraAbbreviations.get(camera)} on {date}
-              </Typography>
-            </Paper>
-            <Offset />
-          </Grid>
-        </Grid>
-      </div>
-
-      <div style={classes.root}>
-        <Grid container spacing={3}>
-          <Grid item xs={6} sm={1}>
-            {photoIndex > 0 && (
-              <Button variant="contained" onClick={toggleLeft}>
-                ←
-              </Button>
-            )}
-          </Grid>
-          <Grid item xs={6} sm={10}>
-            {/* make sure array is properly sliced before passing in*/}
-            <Posts images={posts.slice(photoIndex, photoIndex + 5)} />{" "}
-          </Grid>
-          <Grid item xs={6} sm={1}>
-            {photoIndex + 5 < numPhotos && (
-              <Button variant="contained" onClick={toggleRight}>
-                →
-              </Button>
-            )}
-          </Grid>
-        </Grid>
-      </div>
+      <Posts images={posts} title={title} />{" "}
     </Grid>
   );
 };

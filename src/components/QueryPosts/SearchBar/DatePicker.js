@@ -4,7 +4,7 @@ import { actionCreators } from "../../../state";
 import { Box, FormControl, TextField } from "@mui/material";
 
 const DatePicker = () => {
-  const date = useSelector((state) => state.date);
+  const { date } = useSelector((state) => state);
 
   const dispatch = useDispatch();
 

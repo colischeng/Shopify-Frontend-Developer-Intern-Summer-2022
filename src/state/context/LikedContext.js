@@ -1,4 +1,7 @@
 import { createContext, useContext, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators } from "../../state";
 
 export const LikedPostsContext = createContext();
 export const UpdateLikedPostsContext = createContext();
@@ -14,6 +17,12 @@ export const useLikedUpdate = () => {
 export const LikedContext = ({ children }) => {
   const [likedPosts, setLikedPosts] = useState({});
 
+  const { photoIndex } = useSelector((state) => state);
+
+  const dispatch = useDispatch();
+
+  const { toggleReset } = bindActionCreators(actionCreators, dispatch);
+
   const updateLikedPosts = (post, act) => {
     const clone = Object.assign({}, likedPosts);
 
@@ -23,6 +32,11 @@ export const LikedContext = ({ children }) => {
     } else {
       delete clone[post.item.id];
       setLikedPosts(clone);
+
+      if (photoIndex + 1 > Object.keys(clone).length) {
+        // may need to change photoIndex if too many photos are unliked
+        toggleReset();
+      }
     }
   };
 

@@ -18,7 +18,7 @@ abbreviations.set(
 );
 
 const CameraSelector = () => {
-  const camera = useSelector((state) => state.camera);
+  const { camera } = useSelector((state) => state);
 
   const dispatch = useDispatch();
 

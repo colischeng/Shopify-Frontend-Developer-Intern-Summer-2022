@@ -4,7 +4,7 @@ import { bindActionCreators } from "redux";
 import { actionCreators } from "../../../state";
 
 const RoverSelector = () => {
-  const rover = useSelector((state) => state.rover);
+  const { rover } = useSelector((state) => state);
 
   const dispatch = useDispatch();
 

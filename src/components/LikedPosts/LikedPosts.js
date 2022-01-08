@@ -1,12 +1,11 @@
-import { useContext } from "react";
 import { useSelector } from "react-redux";
 import { Grid } from "@mui/material";
 import Posts from "../Posts/Posts";
-import { LikedPostsContext } from "../../App";
+import { useLiked } from "../../state/context/LikedContext";
 import Offset from "../Offset";
 
 export const LikedPosts = () => {
-  const LikedPosts = useContext(LikedPostsContext);
+  const LikedPosts = useLiked();
   const photosArray = Object.values(LikedPosts);
 
   const { photoIndex } = useSelector((state) => state);

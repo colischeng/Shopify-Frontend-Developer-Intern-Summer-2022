@@ -1,10 +1,9 @@
-import { useContext } from "react";
 import { Button } from "@mui/material";
-import { LikedPostsContext, UpdateLikedPostsContext } from "../../App";
+import { useLiked, useLikedUpdate } from "../../state/context/LikedContext";
 
 export const LikeUnlikeButton = (post) => {
-  const LikedPosts = useContext(LikedPostsContext);
-  const UpdateLikedPosts = useContext(UpdateLikedPostsContext);
+  const LikedPosts = useLiked();
+  const UpdateLikedPosts = useLikedUpdate();
 
   const liked = post.item.id in LikedPosts;
 

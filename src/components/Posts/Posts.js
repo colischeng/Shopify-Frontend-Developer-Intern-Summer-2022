@@ -13,12 +13,6 @@ import {
 import { LikeUnlikeButton } from "./LikeUnlikeButton";
 import Offset from "../Offset";
 
-const classes = {
-  root: {
-    flexGrow: 1,
-  },
-};
-
 const Posts = (props) => {
   const { photoIndex } = useSelector((state) => state);
 
@@ -34,12 +28,11 @@ const Posts = (props) => {
 
   return (
     <div>
-      <div style={classes.root}>
+      <div>
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            <Paper style={classes.paper}>
+            <Paper>
               <Typography variant="h6" align="center">
-                {" "}
                 {props.title}
               </Typography>
             </Paper>
@@ -56,8 +49,8 @@ const Posts = (props) => {
           )}
         </Grid>
         <Grid item xs={6} sm={10}>
-          {/* make sure array is properly sliced before passing in*/}
           <ImageList cols={5}>
+            {" "}
             {images.slice(photoIndex, photoIndex + 5).map((item) => (
               <ImageListItem key={item.id}>
                 <img src={item.img_src} alt={item.img_src} loading="lazy" />
@@ -75,8 +68,8 @@ const Posts = (props) => {
                     </div>
                   }
                   position="below"
+                  actionIcon={<LikeUnlikeButton item={item} />}
                 />
-                <LikeUnlikeButton item={item} />
               </ImageListItem>
             ))}
           </ImageList>

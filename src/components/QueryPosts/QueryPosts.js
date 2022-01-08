@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Grid, Paper, Typography } from "@mui/material";
+import { Button, Grid, Paper, Typography } from "@mui/material";
 import axios from "axios";
 import SearchBar from "./SearchBar/SearchBar";
 import Posts from "../Posts/Posts";
@@ -15,11 +15,90 @@ const classes = {
   root: {
     flexGrow: 1,
   },
-  paper: {
-    padding: 20,
-    textAlign: "center",
-  },
 };
+
+const sample = [
+  {
+    id: 907607,
+    sol: 3330,
+    camera: {
+      id: 20,
+      name: "FHAZ",
+      rover_id: 5,
+      full_name: "Front Hazard Avoidance Camera",
+    },
+    img_src:
+      "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/03330/opgs/edr/fcam/FRB_693125329EDR_F0920420FHAZ00337M_.JPG",
+    earth_date: "2021-12-18",
+    rover: {
+      id: 5,
+      name: "Curiosity",
+      landing_date: "2012-08-06",
+      launch_date: "2011-11-26",
+      status: "active",
+    },
+  },
+  {
+    id: 907608,
+    sol: 3330,
+    camera: {
+      id: 20,
+      name: "FHAZ",
+      rover_id: 5,
+      full_name: "Front Hazard Avoidance Camera",
+    },
+    img_src:
+      "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/03330/opgs/edr/fcam/FLB_693125329EDR_F0920420FHAZ00337M_.JPG",
+    earth_date: "2021-12-18",
+    rover: {
+      id: 5,
+      name: "Curiosity",
+      landing_date: "2012-08-06",
+      launch_date: "2011-11-26",
+      status: "active",
+    },
+  },
+  {
+    id: 907609,
+    sol: 3330,
+    camera: {
+      id: 20,
+      name: "FHAZ",
+      rover_id: 5,
+      full_name: "Front Hazard Avoidance Camera",
+    },
+    img_src:
+      "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/03330/opgs/edr/fcam/FLB_693125196EDR_F0920420FHAZ00200M_.JPG",
+    earth_date: "2021-12-18",
+    rover: {
+      id: 5,
+      name: "Curiosity",
+      landing_date: "2012-08-06",
+      launch_date: "2011-11-26",
+      status: "active",
+    },
+  },
+  {
+    id: 907610,
+    sol: 3330,
+    camera: {
+      id: 20,
+      name: "FHAZ",
+      rover_id: 5,
+      full_name: "Front Hazard Avoidance Camera",
+    },
+    img_src:
+      "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/03330/opgs/edr/fcam/FLB_693124982EDR_F0920420FHAZ00200M_.JPG",
+    earth_date: "2021-12-18",
+    rover: {
+      id: 5,
+      name: "Curiosity",
+      landing_date: "2012-08-06",
+      launch_date: "2011-11-26",
+      status: "active",
+    },
+  },
+];
 
 export const QueryPosts = () => {
   const { rover, camera, date } = useSelector((state) => state);
@@ -65,7 +144,20 @@ export const QueryPosts = () => {
       <div>{camera}</div>
       <div>{date}</div>
 
-      <Posts />
+      <div style={classes.root}>
+        <Grid container spacing={3}>
+          <Grid item xs={6} sm={1}>
+            <Button variant="contained">←</Button>
+          </Grid>
+          <Grid item xs={6} sm={10}>
+            <Posts images={sample} />{" "}
+            {/* make sure array is properly sliced before passing in*/}
+          </Grid>
+          <Grid item xs={6} sm={1}>
+            <Button variant="contained">→</Button>
+          </Grid>
+        </Grid>
+      </div>
     </Grid>
   );
 };

@@ -1,45 +1,30 @@
-import * as React from "react";
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Grid";
+import {
+  Button,
+  ImageList,
+  ImageListItem,
+  ImageListItemBar,
+} from "@mui/material";
 
-//create our styles
-const classes = {
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: 20,
-    textAlign: "center",
-  },
-};
-
-const Posts = () => {
+const Posts = (props) => {
+  const images = props.images;
   return (
-    <div style={classes.root}>
-      <Grid container spacing={3}>
-        <Grid item xs={6} sm={1}>
-          <Paper style={classes.paper}>xs=6 sm=1</Paper>
-        </Grid>
-        <Grid item xs={6} sm={2}>
-          <Paper style={classes.paper}>xs=6 sm=2</Paper>
-        </Grid>
-        <Grid item xs={6} sm={2}>
-          <Paper style={classes.paper}>xs=6 sm=2</Paper>
-        </Grid>
-        <Grid item xs={6} sm={2}>
-          <Paper style={classes.paper}>xs=6 sm=2</Paper>
-        </Grid>
-        <Grid item xs={6} sm={2}>
-          <Paper style={classes.paper}>xs=6 sm=2</Paper>
-        </Grid>
-        <Grid item xs={6} sm={2}>
-          <Paper style={classes.paper}>xs=6 sm=2</Paper>
-        </Grid>
-        <Grid item xs={6} sm={1}>
-          <Paper style={classes.paper}>xs=6 sm=1</Paper>
-        </Grid>
-      </Grid>
-    </div>
+    <ImageList cols={5}>
+      {images.map((item) => (
+        <ImageListItem key={item.id}>
+          <img src={item.img_src} alt={item.img_src} loading="lazy" />
+          <ImageListItemBar
+            title={`Photo id: ${item.id}`}
+            subtitle={
+              <div>
+                <span>Sol: {item.sol}</span>
+              </div>
+            }
+            position="below"
+          />
+          <Button variant="outlined">Like </Button>
+        </ImageListItem>
+      ))}
+    </ImageList>
   );
 };
 

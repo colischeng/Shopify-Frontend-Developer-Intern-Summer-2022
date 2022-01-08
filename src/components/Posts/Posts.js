@@ -10,6 +10,7 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
+import { LikeUnlikeButton } from "./LikeUnlikeButton";
 import Offset from "../Offset";
 
 const classes = {
@@ -75,7 +76,7 @@ const Posts = (props) => {
                   }
                   position="below"
                 />
-                <Button variant="outlined">Like </Button>
+                <LikeUnlikeButton item={item} />
               </ImageListItem>
             ))}
           </ImageList>

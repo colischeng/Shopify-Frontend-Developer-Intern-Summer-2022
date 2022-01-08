@@ -1,7 +1,8 @@
-export const LikedPosts = () => {
-  const map = new Map();
-  map.set("1234", { 12: 5134 });
-  map.set("59", { 11: "banana" });
+import { useContext } from "react";
+import { LikedPostsContext } from "../../App";
 
-  return <div>{JSON.stringify(Object.fromEntries(map))}</div>;
+export const LikedPosts = () => {
+  const LikedPosts = useContext(LikedPostsContext);
+
+  return <div>{JSON.stringify(LikedPosts)}</div>;
 };

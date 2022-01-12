@@ -2,7 +2,7 @@
 
 [Link to technical requirements](https://docs.google.com/document/d/1ICu8X_DHYePf6wIA4cJuTM-fLy0atd5eNjKCfkXC3hw/edit#heading=h.cny9umcsnqqn)
 
-[Link to application]
+[Link to application](https://colischeng.github.io/Shopify-Frontend-Developer-Intern-Summer-2022)
 
 <br />
 

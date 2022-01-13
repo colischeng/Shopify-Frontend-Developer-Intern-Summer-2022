@@ -42,7 +42,7 @@ npm start
 
 You can search for photos using any combination of parameters of "Rover", "Camera", and "Earth Date".
 
-For example, the following search would let you browse all 83 photos (0 based!) from Curiosity's Front Hazard Avoidance Camera on January 1, 2021.
+For example, the following search would let you browse all 83 photos (0 based!) from Curiosity's Front Hazard Avoidance Camera on January 21, 2021.
 
 ![](images/searching.jpg)
 

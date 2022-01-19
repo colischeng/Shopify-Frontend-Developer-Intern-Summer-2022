@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/Shopify-Frontend-Developer-Intern-Summer-2022/static/js/main.607ba282.js",
+    "main.js": "/Shopify-Frontend-Developer-Intern-Summer-2022/static/js/main.e76ff870.js",
     "index.html": "/Shopify-Frontend-Developer-Intern-Summer-2022/index.html",
-    "main.607ba282.js.map": "/Shopify-Frontend-Developer-Intern-Summer-2022/static/js/main.607ba282.js.map"
+    "main.e76ff870.js.map": "/Shopify-Frontend-Developer-Intern-Summer-2022/static/js/main.e76ff870.js.map"
   },
   "entrypoints": [
-    "static/js/main.607ba282.js"
+    "static/js/main.e76ff870.js"
   ]
 }

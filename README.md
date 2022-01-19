@@ -11,7 +11,7 @@ A web application using ReactJS, React-Redux, and Material-UI that displays Mars
 <br />
 
 - Viewing only previously "liked" photos by toggling
-- Persistence where "liked" photos get saved on refresh
+- Persistence where "liked" photos get saved on leave or reload
 - A Rover, Camera, and Earth Date UI that allows users to pick and browse photos starting from a specific set of parameters
 
 <br/>

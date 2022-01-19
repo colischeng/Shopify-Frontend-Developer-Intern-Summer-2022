@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../../state";
@@ -16,6 +16,17 @@ export const useLikedUpdate = () => {
 
 export const LikedContext = ({ children }) => {
   const [likedPosts, setLikedPosts] = useState({});
+
+  useEffect(() => {
+    const data = localStorage.getItem("likedPhotos");
+    if (data) {
+      setLikedPosts(JSON.parse(data));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("likedPhotos", JSON.stringify(likedPosts));
+  });
 
   const { photoIndex } = useSelector((state) => state);
 

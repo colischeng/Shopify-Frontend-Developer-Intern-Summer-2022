@@ -65,7 +65,7 @@ Under each post, you have the ability to "Like" and "Unlike" the photo.
 
 ![](images/like_unlike.jpg)
 
-Any unliked photos will display a "Like" button, whereas any liked photos will display an "Unlike" button.
+Any unliked photos will display a "Like" button, whereas any liked photos will display an "Unlike" button. Any previously liked photos will be persisted on leave or reload.
 
 <br/>
 
